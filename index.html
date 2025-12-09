@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FixItNow - Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="login-page-container">
+        <div class="login-split-card glass">
+            <!-- Left Side: Image -->
+            <div class="card-image-section">
+                <img src="images/login-bg.jpg" alt="Login Background">
+            </div>
+
+            <!-- Right Side: Forms -->
+            <div class="card-form-section">
+                <div class="login-header">
+                    <h1>FixItNow</h1>
+                    <p>Hostel Service Portal</p>
+                </div>
+
+                <div class="toggle-buttons">
+                    <button id="tab-login" class="toggle-btn active">Login</button>
+                    <button id="tab-signup" class="toggle-btn">Signup</button>
+                </div>
+
+                <!-- Login Form -->
+                <form id="login-form">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Login</button>
+                    <button type="button" class="btn-google">
+                        <i class="fab fa-google"></i> Login with Google
+                    </button>
+                </form>
+
+                <!-- Signup Form -->
+                <form id="signup-form" class="hidden">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" class="form-control" placeholder="Don't use your real name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Hostel & Room No.</label>
+                        <input type="text" class="form-control" placeholder="e.g. H1-101" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" placeholder="Create a password" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Signup</button>
+                    <button type="button" class="btn-google">
+                        <i class="fab fa-google"></i> Signup with Google
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="index.js"></script>
+</body>
+
+</html>

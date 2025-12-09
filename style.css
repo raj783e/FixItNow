@@ -1,0 +1,652 @@
+:root {
+    --primary: #0057FF;
+    --primary-dark: #0046cc;
+    --accent: #22C55E;
+    --premium: #F9A826;
+    --secondary: #22C55E;
+    --background: #F0F2F5;
+    --text-primary: #1F2937;
+    --text-secondary: #6B7280;
+    --card-bg: #FFFFFF;
+    --form-bg: #F9FAFB;
+    --border-color: #E5E7EB;
+    --glass-border: rgba(255, 255, 255, 0.4);
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: var(--background);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: var(--text-primary);
+}
+
+/* Glassmorphism / Card Class - Updated for Light Theme */
+.glass {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+    border-radius: 20px;
+}
+
+/* Login Page Specifics - Centered Split Card */
+.login-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background: var(--background);
+}
+
+.login-split-card {
+    display: flex;
+    width: 900px;
+    max-width: 100%;
+    min-height: 550px;
+    /* Allow growth, but start at a reasonable height */
+    /* No fixed height to prevent whitespace issues */
+    background: #FEFBF6;
+    /* Match image background */
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    /* Ensures image corners are rounded */
+    border: 1px solid var(--border-color);
+}
+
+.card-image-section {
+    flex: 1 1 50%;
+    /* Explicitly 50% width */
+    position: relative;
+    background-color: #FEFBF6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.card-image-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* Ensures text is fully visible */
+    object-position: center;
+}
+
+/* Image overlay removed for cleaner look with text-heavy image */
+
+.card-form-section {
+    flex: 1 1 50%;
+    /* Explicitly 50% width */
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Removed overflow-y: auto to ensure container grows with content */
+    background: #FEFBF6;
+    /* Match image background */
+}
+
+/* Responsive Design for Login Page */
+
+/* Laptops & Desktops (> 1024px) */
+/* (Default styles cover this range) */
+
+/* Tablets & Small Laptops (768px - 1024px) */
+@media (max-width: 1024px) {
+    .login-split-card {
+        width: 90%;
+        min-height: 500px;
+    }
+}
+
+/* Tablets (portrait) & Large Phones (max-width: 768px) */
+@media (max-width: 768px) {
+    .login-page-container {
+        padding: 10px;
+    }
+
+    .login-split-card {
+        flex-direction: column;
+        width: 100%;
+        max-width: 500px;
+        min-height: auto;
+        border-radius: 15px;
+    }
+
+    .card-image-section {
+        display: none;
+        /* Hide image on mobile/tablet portrait to focus on form */
+    }
+
+    .card-form-section {
+        padding: 30px 20px;
+        flex: none;
+        /* Allow auto sizing */
+    }
+
+    .login-header h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Mobile Phones (max-width: 480px) */
+@media (max-width: 480px) {
+    .login-split-card {
+        box-shadow: none;
+        border: none;
+        background: transparent;
+    }
+
+    .card-form-section {
+        padding: 10px;
+        background: transparent;
+    }
+
+    .form-group label {
+        font-size: 0.85rem;
+    }
+
+    .login-header h1 {
+        font-size: 1.8rem;
+    }
+}
+
+.login-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+    color: #1e293b;
+    /* Dark Navy from image */
+    font-weight: 700;
+}
+
+.login-header p {
+    font-size: 1rem;
+    margin-bottom: 30px;
+    color: var(--text-secondary);
+}
+
+.toggle-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    background: #E5E7EB;
+    border-radius: 30px;
+    padding: 5px;
+}
+
+.toggle-btn {
+    flex: 1;
+    padding: 10px 20px;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.toggle-btn.active {
+    background: var(--primary);
+    color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 87, 255, 0.3);
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    background: var(--form-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    color: var(--text-primary);
+    outline: none;
+    transition: all 0.3s;
+}
+
+.form-control:focus {
+    border-color: var(--primary);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(0, 87, 255, 0.1);
+}
+
+.form-control::placeholder {
+    color: #9CA3AF;
+}
+
+/* Fix for dropdown options visibility */
+select.form-control option {
+    background-color: #fff;
+    color: var(--text-primary);
+}
+
+/* Login Card Specific Overrides */
+.login-split-card .btn-primary {
+    background-color: #1e293b;
+    /* Dark Navy from image branding */
+    box-shadow: none;
+}
+
+.login-split-card .btn-primary:hover {
+    background-color: #0f172a;
+    transform: translateY(-2px);
+}
+
+.login-split-card .toggle-btn.active {
+    background: #1e293b;
+    box-shadow: none;
+}
+
+.login-split-card .form-control:focus {
+    border-color: #1e293b;
+    box-shadow: 0 0 0 3px rgba(30, 41, 59, 0.1);
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 14px;
+    background: var(--primary);
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    background: var(--primary-dark);
+    box-shadow: 0 10px 15px -3px rgba(0, 87, 255, 0.4);
+}
+
+.btn-danger {
+    width: 100%;
+    padding: 14px;
+    background: #EF4444;
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-danger:hover {
+    transform: translateY(-2px);
+    background: #DC2626;
+    box-shadow: 0 10px 15px -3px rgba(239, 68, 68, 0.4);
+}
+
+.btn-google {
+    width: 100%;
+    padding: 14px;
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.btn-google:hover {
+    transform: translateY(-2px);
+    background: #F9FAFB;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Dashboard Styles */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 15px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: var(--text-primary);
+}
+
+.logo span {
+    color: var(--primary);
+    text-shadow: none;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: color 0.3s;
+    position: relative;
+}
+
+nav a:hover {
+    color: var(--primary);
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background: var(--primary);
+    transition: width 0.3s;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+.btn-logout {
+    padding: 8px 25px;
+    background: #EF4444;
+    /* Standard logout red */
+    border: none;
+    border-radius: 25px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+
+.btn-logout:hover {
+    transform: translateY(-2px);
+    background: #DC2626;
+    box-shadow: 0 4px 6px rgba(239, 68, 68, 0.4);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    width: 100%;
+}
+
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    margin-bottom: 40px;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 15px;
+    color: var(--text-primary);
+    font-weight: 800;
+    background: none;
+    -webkit-text-fill-color: initial;
+}
+
+.hero h1 span {
+    color: var(--primary);
+}
+
+.hero p {
+    font-size: 1.3rem;
+    opacity: 1;
+    color: var(--text-secondary);
+}
+
+.section-title {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    text-align: center;
+    font-weight: 700;
+    color: var(--text-primary);
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--primary);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    margin-bottom: 80px;
+}
+
+.service-card {
+    padding: 40px 30px;
+    text-align: center;
+    transition: all 0.4s ease;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    box-shadow: var(--shadow-sm);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    background: var(--card-bg);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-lg);
+}
+
+.service-icon {
+    font-size: 3.5rem;
+    color: var(--primary);
+    background: none;
+    -webkit-text-fill-color: initial;
+    margin-bottom: 25px;
+    filter: drop-shadow(0 4px 6px rgba(0, 87, 255, 0.2));
+}
+
+.service-card h3 {
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+    color: var(--text-primary);
+}
+
+.service-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.forms-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    margin-bottom: 100px;
+}
+
+.form-card {
+    padding: 50px;
+    width: 80%;
+    max-width: 900px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+}
+
+.form-card h2 {
+    margin-bottom: 30px;
+    color: var(--text-primary);
+    font-size: 1.8rem;
+    border-left: 5px solid var(--primary);
+    padding-left: 15px;
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.tables-section {
+    margin-bottom: 80px;
+}
+
+.table-container {
+    overflow-x: auto;
+    padding: 30px;
+    margin-bottom: 40px;
+    background: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    color: var(--text-primary);
+}
+
+th,
+td {
+    padding: 20px;
+    text-align: left;
+}
+
+th {
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+td {
+    background: var(--form-bg);
+}
+
+td:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+td:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+tr:hover td {
+    background: #EFF6FF;
+    /* Very light blue on hover */
+}
+
+.status-pill {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-pending {
+    background: rgba(249, 168, 38, 0.1);
+    color: var(--premium);
+    border: 1px solid rgba(249, 168, 38, 0.3);
+}
+
+.status-resolved {
+    background: rgba(34, 197, 94, 0.1);
+    color: var(--accent);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.status-submitted {
+    background: rgba(0, 87, 255, 0.1);
+    color: var(--primary);
+    border: 1px solid rgba(0, 87, 255, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav ul {
+        gap: 15px;
+        font-size: 0.9rem;
+    }
+
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+
+    .form-card {
+        width: 95%;
+        padding: 30px;
+    }
+}

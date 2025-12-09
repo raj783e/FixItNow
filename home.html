@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FixItNow - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Sticky Header -->
+    <header class="glass">
+        <div class="logo">FixIt<span>Now</span></div>
+        <nav>
+            <ul>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#request">Request</a></li>
+                <li><a href="#rector">Rector</a></li>
+                <li><a href="#tracking">Tracking</a></li>
+                <li><a href="#data">Stored Data</a></li>
+            </ul>
+        </nav>
+        <button id="btn-logout" class="btn-logout">Logout</button>
+
+    </header>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Hostel Assistance</h1>
+            <p>One-stop solution for all your hostel maintenance needs.</p>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card glass">
+                    <i class="fas fa-broom service-icon"></i>
+                    <h3>Room Cleaning</h3>
+                    <p>Daily room cleaning services.</p>
+                </div>
+                <div class="service-card glass">
+                    <i class="fas fa-bolt service-icon"></i>
+                    <h3>Electrical</h3>
+                    <p>Repair lights, fans, and sockets.</p>
+                </div>
+                <div class="service-card glass">
+                    <i class="fas fa-wrench service-icon"></i>
+                    <h3>Plumbing</h3>
+                    <p>Fix leaks and bathroom issues.</p>
+                </div>
+                <div class="service-card glass">
+                    <i class="fas fa-wifi service-icon"></i>
+                    <h3>WiFi</h3>
+                    <p>Resolve internet connectivity problems.</p>
+                </div>
+                <div class="service-card glass">
+                    <i class="fas fa-utensils service-icon"></i>
+                    <h3>Mess</h3>
+                    <p>Food quality and hygiene complaints.</p>
+                </div>
+                <div class="service-card glass">
+                    <i class="fas fa-tshirt service-icon"></i>
+                    <h3>Laundry</h3>
+                    <p>Washing and ironing services.</p>
+                </div>
+                <div class="service-card glass">
+                    <i class="fas fa-ellipsis-h service-icon"></i>
+                    <h3>Others</h3>
+                    <p>Any other general assistance.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Forms Section -->
+        <div class="forms-section">
+            <!-- Request Form -->
+            <section id="request" class="form-card glass">
+                <h2>Maintenance Request</h2>
+                <form id="maintenance-form">
+                    <div class="form-group">
+                        <label>UserName</label>
+                        <input type="text" id="user-name-display" class="form-control"
+                            placeholder="Username (Don't use your real name)">
+                    </div>
+                    <div class="form-group">
+                        <label>Hostel/Room</label>
+                        <input type="text" id="user-room-display" class="form-control"
+                            placeholder="Enter Room (e.g. H1-101)">
+                    </div>
+                    <div class="form-group">
+                        <label>Service Type</label>
+                        <select id="service-type" class="form-control">
+                            <option>Room Cleaning</option>
+                            <option>Electrical</option>
+                            <option>Plumbing</option>
+                            <option>WiFi</option>
+                            <option>Mess</option>
+                            <option>Laundry</option>
+                            <option>Others</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="request-desc" class="form-control" placeholder="Describe the issue..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Submit Request</button>
+                </form>
+            </section>
+
+            <!-- Rector Complaint -->
+            <section id="rector" class="form-card glass">
+                <h2>Rector Complaint</h2>
+                <form id="rector-form">
+                    <div class="form-group">
+                        <label>Complaint Type</label>
+                        <select id="complaint-type" class="form-control">
+                            <option>Harassment</option>
+                            <option>Safety Issue</option>
+                            <option>Serious Complaint</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="complaint-desc" class="form-control"
+                            placeholder="Describe the serious issue..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-danger">Submit to
+                        Rector</button>
+                </form>
+            </section>
+        </div>
+
+        <!-- Complaint Tracking Section -->
+        <section id="tracking" class="tables-section">
+            <h2 class="section-title">Complaint Tracking</h2>
+            <div class="table-container glass">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Complaint Type</th>
+                            <th>Room</th>
+                            <th>Status</th>
+                            <th>Updated Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tracking-table-body">
+                        <!-- Dynamic content will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Stored Data Section -->
+        <section id="data" class="tables-section">
+            <h2 class="section-title">Stored Data / Reviews</h2>
+            <div class="table-container glass">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>UserName</th>
+                            <th>Room</th>
+                            <th>Complaint</th>
+                            <th>Date</th>
+                            <th>Review</th>
+                        </tr>
+                    </thead>
+                    <tbody id="stored-data-body">
+                        <!-- Dynamic content will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script type="module" src="index.js"></script>
+</body>
+
+</html>
